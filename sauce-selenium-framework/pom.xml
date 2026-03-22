@@ -70,10 +70,5 @@
     <version>3.0.0-beta3</version>
     <scope>compile</scope>
 </dependency>
-	<dependency>
-		<groupId>Selpractice</groupId>
-		<artifactId>Selpractice</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
 </dependencies>
 </project>

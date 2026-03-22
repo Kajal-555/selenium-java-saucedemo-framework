@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,7 +21,11 @@ public class BaseTest {
 	@BeforeMethod
 	public void setup() throws IOException{
 		if(driver==null) {
-			FileReader fr=new FileReader("C:\\Eclipse-workspace\\Sauce\\sauce-selenium-framework\\src\\main\\resources\\config.properties");
+			//FileReader fr=new FileReader("C:\\Eclipse-workspace\\Sauce\\sauce-selenium-framework\\src\\main\\resources\\config.properties");
+			String path = System.getProperty("user.dir") +
+			        "\\src\\main\\resources\\config.properties";
+
+			FileReader fr = new FileReader(path);
 			prop.load(fr);
 		}
 		
@@ -36,6 +41,14 @@ public class BaseTest {
 		}
 		
 	}
+	
+	public void login(String username, String password) {
+
+	    driver.findElement(By.id("user-name")).sendKeys(username);
+	    driver.findElement(By.id("password")).sendKeys(password);
+	    driver.findElement(By.id("login-button")).click();
+	}
+	
 	@AfterMethod
 	public void teardown() {
 		if(driver!=null) {
